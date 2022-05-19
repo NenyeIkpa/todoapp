@@ -14,7 +14,7 @@ fun main() {
     val listOfTask = mutableListOf(
         Todo("Record screen cast"),
         Todo("Check the kids"),
-        Todo("Go to the store", true),
+        Todo("Go to the store"),
         Todo("Reply emails")
 
     )
