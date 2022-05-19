@@ -1,6 +1,6 @@
 import java.util.*
 
-fun main(args: Array<String>) {
+fun main() {
     val scanner  = Scanner(System.`in`)
     println("---------------------------------------------")
     println("Todo Application")
@@ -47,7 +47,7 @@ fun main(args: Array<String>) {
             for (i in listOfTodo.indices) {
                 if (selection == i + 1) {
                     if (!listOfTodo[i].isComplete) {
-                        listOfTodo[i].task = "***${listOfTodo[i].task}"
+                        listOfTodo[i].task = "Completed -> ${listOfTodo[i].task}"
                         listOfTodo[i].isComplete = true
                     } else {
                         println("This task is already done")
