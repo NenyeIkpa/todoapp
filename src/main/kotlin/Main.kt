@@ -1,3 +1,4 @@
+
 import java.util.*
 
 fun main() {
@@ -9,16 +10,6 @@ fun main() {
     println("please enter your name ")
     val name = scanner.nextLine()
     println("Good day $name, you can enter your todo below")
-    val listOfTodo = mutableListOf<Todo>()
-
-    val listOfTask = mutableListOf(
-        Todo("Record screen cast"),
-        Todo("Check the kids"),
-        Todo("Go to the store"),
-        Todo("Reply emails")
-
-    )
-    listOfTodo.addAll(listOfTask)
 
     while (true){
         println("what will you like to do ... \n -> enter 1 to add todo \n -> enter 2 to view list \n -> enter 3 to mark todo as complete \n -> enter 4 to delete todo \n -> enter 5 to close")
@@ -31,50 +22,22 @@ fun main() {
         if (first == 1){
             println("enter todo below")
             val whatTodo = scanner.nextLine()
-            listOfTodo.add(Todo(whatTodo))
+            Todo().addTodo(whatTodo)
         }else if (first == 2){
-            for (i in listOfTodo.indices){
-                println("(${i+1}) ${listOfTodo[i].task}")
-            }
-            println("---------------------------------------------")
+            Todo().listTodos()
+            Todo().printLine()
         } else if (first == 3) {//to mark complete
         println("To mark as done, select todo by number")
-        for (i in listOfTodo.indices) {
-            println("(${i + 1}) ${listOfTodo[i].task}")
-        }
+             Todo().listTodos()
+            Todo().printLine()
             val selection = scanner.nextInt()
-
-            for (i in listOfTodo.indices) {
-                if (selection == i + 1) {
-                    if (!listOfTodo[i].isComplete) {
-                        listOfTodo[i].task = "Completed -> ${listOfTodo[i].task}"
-                        listOfTodo[i].isComplete = true
-                    } else {
-                        println("This task is already done")
-                    }
-                }
-            }
-            println("---------------------------------------------")
-            for (i in listOfTodo.indices) {
-                println("(${i + 1}) ${listOfTodo[i].task}")
-            }
-            println("---------------------------------------------")
+            Todo().markCompleted(selection)
         }else if (first == 4) {
             println("Select the todo to delete")
-            for (i in listOfTodo.indices) {
-                println("(${i + 1}) ${listOfTodo[i].task}")
-            }
+            Todo().listTodos()
+            Todo().printLine()
             val option = scanner.nextInt()
-            for (i in listOfTodo.indices) {
-                if (option == i+1) {
-                    listOfTodo.remove(listOfTodo[i])
-                }
-            }
-            println("---------------------------------------------")
-            for (i in listOfTodo.indices) {
-                println("(${i + 1}) ${listOfTodo[i].task}")
-            }
-            println("---------------------------------------------")
+            Todo().deleteTodo(option)
         }else if (first == 5) {
             break
         }else{
